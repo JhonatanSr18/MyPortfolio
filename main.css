@@ -1,0 +1,217 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --texto-contorno: #272727;
+  --descricao: rgb(7, 148, 136);
+  --sobre: rgb(5, 118, 129);
+
+  --switch: #01859a;
+  --switch-borda: #006b7c;
+  --switch-botao: #f0ffff;
+}
+
+body.dark {
+  --texto-contorno: #eeeeee;
+  --descricao: #43d9cb;
+  --sobre: #b5e8e4;
+
+  --switch: #292929;
+  --switch-borda: #555555;
+  --switch-botao: #ffffff;
+}
+
+body {
+  background-color: #151515;
+}
+
+/* HEADER */
+
+header {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #151515;
+}
+
+/* BACKGROUND */
+
+.background_img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.img_container {
+  width: 100%;
+  height: 100%;
+}
+
+.background_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+
+  transition: opacity 0.35s ease;
+}
+
+/* CONTEÚDO */
+
+.header_content {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100vh;
+
+  padding: 30px;
+  text-align: center;
+}
+
+/* NOME */
+
+.header_name {
+  position: relative;
+
+  font-family: "Roboto Mono", monospace;
+  font-size: clamp(55px, 7vw, 110px);
+  font-weight: 400;
+
+  letter-spacing: 3px;
+  line-height: 1;
+
+  color: transparent;
+  -webkit-text-stroke: 1px var(--texto-contorno);
+
+  transition: -webkit-text-stroke 0.4s ease;
+}
+
+/* FULL STACK */
+
+.header_descricao {
+  position: relative;
+
+  margin-top: 25px;
+
+  font-family: "Roboto Mono", monospace;
+  font-size: clamp(20px, 2vw, 30px);
+  font-weight: 600;
+
+  color: var(--descricao);
+
+  transition: color 0.4s ease;
+}
+
+/* TEXTO */
+
+.sobre_mim {
+  position: relative;
+
+  max-width: 900px;
+  margin-top: 8px;
+
+  font-family: "DM Mono", monospace;
+  font-size: 15px;
+
+  color: var(--sobre);
+
+  transition: color 0.4s ease;
+}
+
+/* SWITCH */
+
+.botao_flip_cor {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+
+  z-index: 10;
+
+  width: 70px;
+  height: 30px;
+
+  padding: 2px;
+
+  border: 2px solid var(--switch-borda);
+  border-radius: 30px;
+
+  background-color: var(--switch);
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.4s ease,
+    border-color 0.4s ease;
+}
+
+/* BOLINHA */
+
+.btn_flip {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 22px;
+  height: 22px;
+
+  border-radius: 50%;
+
+  background-color: var(--switch-botao);
+
+  transform: translateX(0);
+
+  transition:
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.4s ease;
+}
+
+/* MODO ESCURO */
+
+body.dark .btn_flip {
+  transform: translateX(38px);
+}
+
+/* HOVER */
+
+.botao_flip_cor:hover .btn_flip {
+  transform: scale(1.08);
+}
+
+body.dark .botao_flip_cor:hover .btn_flip {
+  transform: translateX(38px) scale(1.08);
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 768px) {
+  .header_name {
+    font-size: clamp(45px, 12vw, 75px);
+  }
+
+  .header_descricao {
+    margin-top: 18px;
+  }
+
+  .sobre_mim {
+    max-width: 90%;
+    font-size: 13px;
+  }
+
+  .botao_flip_cor {
+    top: 20px;
+    right: 20px;
+  }
+}
